@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Will You Be My Valentine?</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: #fdeff4;
+    font-family: Arial, sans-serif;
+  }
+
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  img {
+    width: 220px;
+    max-width: 80vw;
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    color: #e91e63;
+    margin-bottom: 24px;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  button {
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 14px 22px;
+    white-space: nowrap;
+  }
+
+  #yes {
+    background: #4caf50;
+    color: white;
+    transition: font-size 0.25s ease, padding 0.25s ease;
+  }
+
+  #no {
+    background: #f44336;
+    color: white;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <img id="cat" src="1.webp" alt="cat">
+  <h2>Will you be my Valentine?</h2>
+
+  <div class="buttons">
+    <button id="yes">Yes</button>
+    <button id="no">Are you sure?</button>
+  </div>
+</div>
+
+<script>
+  // Image order MUST match emotional progression
+  const cats = [
+    "2.jpg",
+    "3.jpg",
+    "4.jpg",
+    "5.jpg",
+    "6.jpg",
+    "7.jpg",
+    "8.jpg",
+    "9.jpg",
+    "11.png",
+    "12.png",
+    "13.png"
+  ];
+
+  const noTexts = [
+  "Are you sure?",
+  "Really sure? 🥺",
+  "Pretty please 💗",
+  "Just think about it 🙃",
+  "Don't do this to me 😢",
+  "You're breaking my heart 💔",
+  "I trusted you 😭",
+  "I'll be very sad 🥹",
+  "I'm gonna cry 😭",
+  "Last chance 💖",
+  "Please say yes 🥰",
+  "I won't give up 😤"
+];
+
+  let index = 0;
+  let yesFontSize = 16;
+  let yesPadding = 14;
+
+  document.getElementById("no").addEventListener("click", () => {
+    const i = index % cats.length;
+
+    document.getElementById("cat").src = cats[i];
+    document.getElementById("no").innerText = noTexts[i];
+
+    yesFontSize += 6;
+    yesPadding += 6;
+
+    const yesBtn = document.getElementById("yes");
+    yesBtn.style.fontSize = yesFontSize + "px";
+    yesBtn.style.padding =
+      yesPadding + "px " + (yesPadding + 10) + "px";
+
+    index++;
+  });
+
+  document.getElementById("yes").addEventListener("click", () => {
+  document.body.innerHTML = `
+    <div style="
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      background:#fdeff4;
+      font-family:Arial;
+    ">
+      <img 
+        src="./10.jpg" 
+        alt="happy cat"
+        style="
+          width:240px;
+          max-width:80vw;
+          border-radius:14px;
+          margin-bottom:20px;
+        "
+      />
+      <h1 style="color:#e91e63; margin-bottom:10px;">
+        YAY 💖 I knew it!
+      </h1>
+      <h1 style="color:#e91e63;">
+        I Love youuuuuuu
+      </h1>
+      <h1 style="color:#e91e63;">
+        Babygirl 💖 💖 💖
+      </h1>
+    </div>
+  `;
+});
+
+</script>
+
+</body>
+</html>
+
+
+
+
